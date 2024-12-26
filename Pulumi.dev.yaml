@@ -1,0 +1,26 @@
+config:
+  cloud:
+    security_group:
+      name: pulumi-poc
+      vpc_id: vpc-01c3be072799793f4
+      ingress:
+        - rule_type: ingress
+          from_port: 80
+          to_port: 80
+          protocol: tcp
+          cidr_blocks:
+            - "173.245.48.0/20"
+            - "103.21.244.0/22"
+            - "103.22.200.0/22"
+    ec_instance:
+      name: pulumi-poc
+      instance_type: t2.micro
+      ami_id: ami-0b5673b5f6e8f7fa7
+      subnet_id: subnet-0ac23ab19ef387fbc
+    iam_role:
+      name: pulumi-poc-iam
+      description: IAM role for pulumi-poc for SSM
+      managed_policy_arns:
+        - arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
+        - arn:aws:iam::aws:policy/SecretsManagerReadWrite
+        - arn:aws:iam::aws:policy/AmazonEC2FullAccess
