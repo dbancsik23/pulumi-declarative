@@ -9,19 +9,7 @@ from pulumi_aws.ec2 import InstanceLaunchTemplateArgs
 from libs.helper import PulumiHelper as helper
 
 
-@dataclass(init=False)
 class AwsEC2Instance:
-    name: str
-    instance_type: str
-    ami_id: str
-    vpc_security_group_ids: List[str]
-    subnet_id: Optional[str]
-    key_name: Optional[str]
-    tags: Dict[str, str]
-    additional_volumes: Optional[List[Dict[str, str]]] = None
-    user_data: Optional[str] = None
-    _user_data_base64: Optional[str] = None
-
     def __init__(
             self,
             name: str,

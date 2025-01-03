@@ -7,18 +7,7 @@ from attr import dataclass
 from libs.iam import AssumeRoleService
 
 
-@dataclass(init=False)
 class AwsIAMRole:
-    name: str
-    assume_role_policy: Optional[str] = None
-    description: Optional[str] = None
-    max_session_duration: Optional[int] = None
-    tags: Optional[Dict[str, str]] = None
-    managed_policy_arns: Optional[List[str]] = None
-    inline_policies: Optional[Dict[str, str]] = None
-    role: Optional[aws.iam.Role] = None
-    enable_instance_profile: bool = True
-
     def __init__(
             self,
             name: str,

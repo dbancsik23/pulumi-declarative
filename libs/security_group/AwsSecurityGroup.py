@@ -8,15 +8,7 @@ from attr import dataclass
 from libs.security_group.RuleType import RuleType
 
 
-@dataclass(init=False)
 class AwsSecurityGroup:
-    name: str
-    vpc_id: str
-    ingress: List[Dict]
-    env: str = pulumi.get_stack()
-    egress: Optional[List[Dict]] = None
-    description: Optional[str] = field(init=False)
-
     def __init__(
             self,
             name: str,
